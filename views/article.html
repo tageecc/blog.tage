@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=name %>的个人博客</title>
+    <link rel="stylesheet" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<nav>
+    <div class="wrapper clearfix">
+        <a class="logo" href="/">
+            <img src="/images/favicon.ico" alt="<%=name %>"/>
+
+            <h1><%=name %><span>/个人博客</span></h1>
+        </a>
+        <ul class="tags clearfix">
+            <li class="cur"><a href="#">首页</a></li>
+            <li><a href="#">前端开发</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">生活杂记</a></li>
+            <li><a href="#">还有什么</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="wrapper frm-body clearfix">
+    <!--文章内容-->
+    <div class="frm-main">
+        <div class="mod-article-dtl">
+            <div class="mod-hd">
+                <h2 class="title"><%=article.title%></h2>
+                <span class="date">时间：<%=article.date%></span>
+                <span class="view">浏览：<%=article.view%></span>
+            </div>
+            <div class="mod-bd">
+                <%=article.content%>
+            </div>
+            <div class="mod-fd">
+                <%for(var i =0,v;v=article.comment[i],i < article.comment.length;i++)%>
+                    <div class="mod-common">
+                        <div class="mod-hd"><p class="name"><%=v.name%></p></div>
+                        <div class="mod-bd">
+                            <p class="content"><%=v.content%></p>
+
+                        </div>
+                        <div class="mod-fd">
+                            <a href=""><i class="fa fa-mail-reply"></i></a><span class="separate">|</span><span
+                                class="date"><%v.date%></span>
+                        </div>
+                    </div>
+                <%}%>
+                <!--<div class="mod-common">-->
+                <!--<div class="mod-hd"><p class="name">这是用户</p></div>-->
+                <!--<div class="mod-bd">-->
+                <!--引用：-->
+                <!--<div class="quote">-->
+                <!--<p class="name">这是用户</p>-->
+
+                <!--<p class="content">这貌似是一段试论测试！@#￥%这貌似是一段评论测试！@#￥%</p>-->
+                <!--</div>-->
+                <!--<p class="content">这貌似是一段试论测试！@#￥%这貌似是一段评论测试！@#￥%</p>-->
+                <!--</div>-->
+                <!--<div class="mod-fd">-->
+                <!--<a href=""><i class="fa fa-mail-reply"></i></a><span class="separate">|</span><span-->
+                <!--class="date">12:24&nbsp;&nbsp;3个小时前</span>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="mod-reply">
+            <div class="mod-hd">
+                <p>我的评论：(部分HTML可用)</p>
+            </div>
+            <div class="mod-bd">
+                <label for="rep_cnt">评论<span class="require">*</span></label><textarea class="rep-cnt" id="rep_cnt"
+                                                                                       cols="30" rows="10"></textarea>
+                <label for="rep_name">昵称<span class="require">*</span></label><input id="rep_name" type="text"/>
+                <label for="rep_mail">邮箱<span class="require">*</span></label><input id="rep_mail" type="email"/>
+                <label for="rep_site">个人网站</label><input id="rep_site" type="text"/>
+                <label class="lab-remenber" for="remenber">记住我</label><input id="remenber" type="checkbox"/>
+                <input class="submit" type="submit" value="发表"/>
+            </div>
+        </div>
+    </div>
+
+    <!--侧边栏-->
+    <% include sidebar.html%>
+
+
+</div>
+<footer class="wrapper">
+    <div class="cnt_footer">
+        <a class="copy" href="/">©塔歌</a>
+        <a class="next" href="#"><i class="fa fa-chevron-right"></i></a>
+    </div>
+</footer>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+@import "compass/css3";
+
+$color: #e12828;
+$h_color: #f4645f;
+nav {
+  height: 50px;
+  min-width: 1000px;
+  width: 100%;
+  @include box-shadow(0px 0px 8px #333);
+}
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.frm-body {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.frm-main {
+  width: calc(66.66666667% - 40px);
+  padding: 20px;
+  float: left;
+  position: relative;
+  @include box-shadow(0 0 10px #ccc);
+}
+.frm-content{
+  display: none;
+}
+footer {
+  .cnt_footer {
+    width: 66.6667%;
+  }
+  .copy {
+    color: #999;
+    font-size: 14px;
+    line-height: 65px;
+    &:hover {
+      color: #333;
+    }
+  }
+  .next {
+    float: right;
+    display: block;
+    width: 46px;
+    height: 46px;
+    background: #ccc;
+    text-align: center;
+    line-height: 46px;
+    font-size: 1.4em;
+    color: #f5f5f5;
+    &:hover {
+      background-color: #bbb;
+    }
+  }
+}
+
+.frm-aside {
+  width: calc(33.33333333% - 40px);
+  padding: 10px;
+  float: right;
+  height: 500px;
+}
+
+.logo {
+  float: left;
+  padding: 6px;
+  &:hover {
+    text-decoration: none;
+  }
+  img {
+    width: 40px;
+    height: 40px;
+    @include border-radius(50%);
+  }
+  h1 {
+    display: inline;
+    font-size: 18px;
+    span {
+      margin-left: 10px;
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}
+
+.tags {
+  float: right;
+  li {
+    float: left;
+    margin: 15px 0 0 30px;
+    a {
+      @include transition(color, .23s);
+      &:hover {
+        text-decoration: none;
+        color: $color;
+      }
+    }
+  }
+  .cur a {
+    color: $color;
+  }
+}
+
+.mod-article {
+  padding: 30px 0;
+  border-bottom: 1px dashed #ccc;
+  .title {
+    font-size: 25px;
+    color: $color;
+    padding-left: 10px;
+    border-left: 4px solid $color;
+    a {
+      color: $color;
+    }
+    a:hover {
+      color: $color;
+    }
+  }
+  .detail {
+    img {
+      float: left;
+      padding: 10px;
+    }
+    p {
+      overflow: hidden;
+      padding-top: 5px;
+      line-height: 1.7em;
+      color: #999;
+      font-size: 14px;
+    }
+  }
+  .info {
+    margin-top: 10px;
+    li {
+      float: left;
+      position: relative;
+      margin-right: 30px;
+      font-size: 12px;
+      color: #999;
+    }
+  }
+  .more {
+    color: #fff;
+    float: right;
+    font-size: 12px;
+    background: #f4645f;
+    border-color: $color;
+    padding: 3px 5px;
+    margin-top: -20px;
+    &:hover {
+      background-color: #f5564a;
+      text-decoration: none;
+    }
+    i {
+      margin-right: 5px;
+    }
+  }
+}
+
+.mod-resume {
+  .mod-hd {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    h2 {
+      font-size: 15px;
+      float: left;
+      background-color: $color;
+      width: 205px;
+      padding: 6px 5px;
+      color: #eee;
+    }
+    .follow {
+      padding: 5px;
+      float: right;
+      border: 1px solid #999;
+
+      &:hover {
+        color: #eee;
+        border-color: #eee;
+        background-color: $color;
+        @include transition(color, .23s);
+      }
+    }
+  }
+  .mod-bd {
+    padding: 10px 0;
+    line-height: 1.5em;
+    border-bottom: 1px solid #ccc;
+    .group {
+      width: 90px;
+    }
+    .locate {
+      float: right;
+      margin-right: 150px;
+    }
+    a {
+      i {
+        color: #ccc;
+        margin-right: 5px;
+      }
+      color: #f5564a;
+      display: block;
+    }
+  }
+
+}
+
+.mod-tag {
+  .mod-hd {
+    padding: 10px 0;
+    font-size: 19px;
+    border-bottom: 1px solid #ccc;
+  }
+  .mod-bd {
+    padding: 10px 0;
+    a {
+      line-height: 30px;
+      font-size: 12px;
+      font-weight: normal;
+      margin: 3px;
+      padding: 5px;
+      white-space: nowrap;
+      background-color: #777777;
+      color: #ffffff;
+      @include border-radius(4px);
+      &:hover {
+        @include transition(all .5s ease);
+        @include transform(rotateX(360deg));
+        background: #F4584D;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.mod-article-dtl {
+  .mod-hd {
+    .title {
+      font-size: 25px;
+      color: $color;
+      padding-bottom: 10px;
+    }
+    .date, .view {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+  .mod-bd {
+    padding: 20px 0;
+  }
+  .mod-fd {
+    padding-top: 10px;
+    border-top: 1px solid $color;
+
+  }
+}
+
+.mod-common {
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+  .mod-hd {
+    .name {
+      color: #2B2B2B;
+      font: 700 16px "microsoft yahei";
+    }
+  }
+  .mod-bd {
+    padding: 10px 0;
+    text-indent: 30px;
+    .content {
+      padding: 15px 0;
+      font-size: 14px;
+    }
+    .quote {
+      padding: 10px;
+      width: 90%;
+      margin: 0 auto;
+      background-color: #faf9e3;
+      border: 1px solid #ccc;
+      @include border-radius(10px);
+      .name {
+        color: #2B2B2B;
+        font: 700 16px "microsoft yahei";
+      }
+    }
+  }
+  .mod-fd {
+    float: right;
+    font-size: 12px;
+    color: #999;
+    border: 0;
+    padding: 0;
+    margin: -10px 0 0 0;
+    a {
+      color: #999;
+      &:hover {
+        color: #333;
+      }
+    }
+    .separate {
+      margin: 0 5px;
+    }
+  }
+}
+
+.mod-reply {
+  .mod-hd {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .mod-bd {
+    padding: 5px 0;
+    input:focus, textarea:focus {
+      border: #87C6F9 1px solid;
+      box-shadow: 0 0 8px rgba(103, 166, 217, 1);
+    }
+    input {
+      text-indent: 10px;
+      height: 30px;
+      width: 250px;
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      @include border-radius(5px);
+
+    }
+    .rep-cnt {
+      padding: 5px;
+      width: 90%;
+      height: 100px;
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      @include border-radius(5px);
+    }
+    #remenber {
+      display: inline;
+      width: 15px;
+      height: 15px;
+    }
+    .submit{
+    }
+    .require {
+      color: red;
+    }
+  }
+}
