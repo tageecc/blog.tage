@@ -6,7 +6,7 @@ var ArticleSchema = new mongoose.Schema({
     content: String,//内容
     view: Number,//浏览量
     date: String,//发布时间
-    comment: {}//评论
+    comment: []//评论
 });
 
 module.exports = ArticleSchema;

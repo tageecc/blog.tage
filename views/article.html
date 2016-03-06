@@ -4,7 +4,9 @@
     <title><%=name %>的个人博客</title>
     <link rel="stylesheet" href="/stylesheets/reset.css"/>
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="lib/editor/editormd.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <script src="/javascripts/marked.min.js"></script>
 </head>
 <body>
 <nav>
@@ -28,15 +30,18 @@
     <div class="frm-main">
         <div class="mod-article-dtl">
             <div class="mod-hd">
-                <h2 class="title"><%=article.title%></h2>
+                <h1 class="title"><%=article.title%></h1>
                 <span class="date">时间：<%=article.date%></span>
                 <span class="view">浏览：<%=article.view%></span>
             </div>
-            <div class="mod-bd">
-                <%=article.content%>
+            <div class="mod-bd markdown-body" id="content">
+                <textarea name="" id="temp" cols="30" rows="10" style="display: none;"><%=article.content%></textarea>
+                <script>
+                    document.getElementById('content').innerHTML = marked(document.getElementById('temp').value);
+                </script>
             </div>
             <div class="mod-fd">
-                <%for(var i =0,v;v=article.comment[i],i < article.comment.length;i++)%>
+                <%for(var i =0,v;v=article.comment[i],i < article.comment.length;i++){%>
                     <div class="mod-common">
                         <div class="mod-hd"><p class="name"><%=v.name%></p></div>
                         <div class="mod-bd">
@@ -94,6 +99,5 @@
         <a class="next" href="#"><i class="fa fa-chevron-right"></i></a>
     </div>
 </footer>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 </body>
 </html>

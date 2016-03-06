@@ -35,7 +35,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

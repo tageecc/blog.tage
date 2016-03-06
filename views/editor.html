@@ -23,25 +23,34 @@
             toolbarIcons: function () {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
                 // Using "||" set icons align right.
-                return ["spacer", "preview", "bold", "italic", "spacer", "link", "quote", "code", "image", "spacer", "del", "list-ol", "list-ul", "hr", "spacer", "undo", "redo", "||", "user", "spacer","tags", "submit"]
+                return ["spacer", "preview", "bold", "italic", "spacer", "link", "quote", "code", "image", "spacer", "del", "list-ol", "list-ul", "hr", "spacer", "undo", "redo", "||", "user", "spacer", "submit"]
             },
             // 用于增加自定义工具栏的功能，可以直接插入HTML标签，不使用默认的元素创建图标
             toolbarCustomIcons: {
                 user: '<span class="mybtn user"><i class="fa fa-user"></i><%=name%></span>',
                 spacer: '<span class="wmd-spacer"></span>',
-                tags:'<button class="mybtn"><i class="fa fa-tags"></i>标签</button><div class="box-tags">asd</div>',
-                submit: '<button class="mybtn submit"><i class="fa fa-share-square-o"></i>发布</button>'
-            },
-
-            onload: function () {
-                $("[type=\"file\"]").bind("change", function () {
-                    alert($(this).val());
-                    testEditor.cm.replaceSelection($(this).val());
-                    console.log($(this).val(), testEditor);
-                });
+                submit: '<button onclick="post();" class="mybtn submit"><i class="fa fa-share-square-o"></i>发布</button>'
             }
         });
     });
+
+    function post(){
+
+        var article={
+            title: "namespace使用方法",//标题
+            tags: ['php','后台'],//标签
+            content: Editor.getMarkdown(),//内容
+            view: 111,//浏览量
+            date: "2014/4/4",//发布时间
+            comment: [
+                {name:"塔哥的水军一号1",content:'这是一段划水说得很好！',date:'2016/3/6'},
+                {name:"塔哥的水军二号2",content:'这是一段划水，说得很好！2',date:'2016/3/7'}
+            ]//评论
+        };
+        $.post('/article',{article:article},function(result){
+            console.log(result);
+        },'json');
+    }
 </script>
 </body>
 </html>
