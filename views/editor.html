@@ -35,7 +35,7 @@
     });
 
     function post(){
-
+    alert(Editor.getMarkdown());
         var article={
             title: "namespace使用方法",//标题
             tags: ['php','后台'],//标签
@@ -47,7 +47,7 @@
                 {name:"塔哥的水军二号2",content:'这是一段划水，说得很好！2',date:'2016/3/7'}
             ]//评论
         };
-        $.post('/article',{article:article},function(result){
+        $.post('/article',article,function(result){
             console.log(result);
         },'json');
     }

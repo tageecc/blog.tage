@@ -26,134 +26,24 @@
 <div class="wrapper frm-body clearfix">
     <!--文章列表-->
     <div class="frm-main">
+
+        <%for(var i =0,v;v=articles[i],i < articles.length;i++){%>
         <section class="mod-article">
-            <h2 class="title"><a href="/article/111">使用 highlight.js 高亮你的代码</a></h2>
+            <h2 class="title"><a href="/article/<%=v._id %>"><%=v.title %></a></h2>
 
             <div class="detail clearfix">
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
+                <p><%=v.content %>
                 </p>
             </div>
             <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
+                <li class="date"><i class="fa fa-clock-o"></i><%=v.date %></li>
                 <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
+                <li class="view"><i class="fa fa-eye"></i><%=v.view %></li>
                 <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
             </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
+            <a class="more" href="/article/<%=v._id %>"><i class="fa fa-external-link"></i>阅读全文</a>
         </section>
-        <section class="mod-article">
-            <h2 class="title"><a href="">使用 highlight.js 高亮你的代码</a></h2>
-
-            <div class="detail clearfix">
-                <img src="http://placehold.it/250x150" alt=""/>
-
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
-                </p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
-                <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
-            </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
-        </section>
-        <section class="mod-article">
-            <h2 class="title"><a href="">使用 highlight.js 高亮你的代码</a></h2>
-
-            <div class="detail clearfix">
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
-                </p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
-                <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
-            </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
-        </section>
-        <section class="mod-article">
-            <h2 class="title"><a href="">使用 highlight.js 高亮你的代码</a></h2>
-
-            <div class="detail clearfix">
-                <img src="http://placehold.it/250x150" alt=""/>
-
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
-                </p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
-                <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
-            </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
-        </section>
-        <section class="mod-article">
-            <h2 class="title"><a href="">使用 highlight.js 高亮你的代码</a></h2>
-
-            <div class="detail clearfix">
-                <img src="http://placehold.it/250x150" alt=""/>
-
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
-                </p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
-                <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
-            </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
-        </section>
-        <section class="mod-article">
-            <h2 class="title"><a href="">使用 highlight.js 高亮你的代码</a></h2>
-
-            <div class="detail clearfix">
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
-                </p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
-                <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
-            </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
-        </section>
-        <section class="mod-article">
-            <h2 class="title"><a href="">使用 highlight.js 高亮你的代码</a></h2>
-
-            <div class="detail clearfix">
-                <img src="http://placehold.it/250x150" alt=""/>
-
-                <p>Shadow DOM 最近在尝试做公司的前端组件化，采用自创的CBC（Classname Based Components）模式。今天学习了一下 Web Components
-                    规范的其中一个组成部分，Shadow DOM，也算为今后的组件化之路进行铺垫吧。 什么是 Shadow DOM? Shadow DOM
-                    在我们开发组件的时候弥补了DOM树封装性不足的缺点。通过Shadow DOM，
-                </p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i>2015/12/12</li>
-                <li class="author"><i class="fa fa-user"></i>塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i>5013</li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
-            </ul>
-            <a class="more" href=""><i class="fa fa-external-link"></i>阅读全文</a>
-        </section>
-
+        <%}%>
     </div>
     <!--文章内容-->
     <div class="frm-main frm-content">

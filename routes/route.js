@@ -4,7 +4,15 @@ var Article = require('../model/article');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-    res.render('index', {name: '塔歌'});
+    Article.find({}, function (err, articles) {
+        if (err) console.error(err);
+        if (articles&&articles.length) {
+            res.render('index', {name:'塔哥',articles: articles});
+        } else {
+            console.log("没有文章，怎么办？？？？？？？？？？？？？？？？？？？？？？");
+            res.render('500');
+        }
+    })
 });
 
 router.get('/article/:id', function (req, res, next) {
@@ -19,7 +27,7 @@ router.get('/article/:id', function (req, res, next) {
 router.post('/article',function(req, res, next){
     console.log(req.body);
     console.log(req.body.article);
-    Article.create(req.body.article,function(err){
+    Article.create(req.body,function(err){
         if(err) {
             console.log(err);
         } else {
