@@ -39,7 +39,11 @@
                 <li class="date"><i class="fa fa-clock-o"></i><%=v.date %></li>
                 <li class="author"><i class="fa fa-user"></i>塔歌</li>
                 <li class="view"><i class="fa fa-eye"></i><%=v.view %></li>
-                <li class="tag"><i class="fa fa-tags"></i>前端开发，JavaScript</li>
+                <li class="tag"><i class="fa fa-tags"></i>
+                    <%for(var t=0;t < v.tags.length;t++){%>
+                        <span class="tag-item"><%=v.tags[t]%></span>
+                    <%}%>
+                </li>
             </ul>
             <a class="more" href="/article/<%=v._id %>"><i class="fa fa-external-link"></i>阅读全文</a>
         </section>

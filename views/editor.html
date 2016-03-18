@@ -46,7 +46,7 @@
             dataType: "json",
             data: {
                 title: title ? title[1] : '还没有标题。。。。',//标题
-                tags: tags ? tags[1].split(' ') : ['未分类'],//标签
+                tags: tags!=null ? tags[1] : '未分类', //标签
                 validity: validity!=null ? validity[1] : "还没有简介。。。。",
                 content: content!=null ? content[1] : "还没有内容。。。。"//内容
             },

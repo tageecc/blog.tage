@@ -32,6 +32,12 @@
                 <h1 class="title"><%=article.title%></h1>
                 <span class="date">时间：<%=article.date%></span>
                 <span class="view">浏览：<%=article.view%></span>
+                <div class="tag"><i class="fa fa-tags"></i>
+                    <%for(var t=0;t < article.tags.length;t++){%>
+                    <span class="tag-item"><%=article.tags[t]%></span>
+                    <%}%>
+                </div>
+
             </div>
             <div class="mod-bd markdown-body" id="content">
                 <textarea name="" id="temp" cols="30" rows="10" style="display: none;"><%=article.content%></textarea>

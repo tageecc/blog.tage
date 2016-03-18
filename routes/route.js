@@ -24,12 +24,13 @@ router.post('/article', function (req, res, next) {
     var article={
         title:req.body.title,
         head_img:req.body.head_img,
-        tags:req.body.tags,
+        tags:req.body.tags.split(' '),
         validity :req.body.validity,
         content:req.body.content,
         date:Date.getDateTime(),
         view:0
     };
+    console.log(article.tags);
     Article.create(article, function (err) {
         if (err) {
             console.log(err);
