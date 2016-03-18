@@ -2,9 +2,9 @@
 <html>
 <head>
     <title><%=name %>的个人博客</title>
-    <link rel="stylesheet" href="/stylesheets/reset.css"/>
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="lib/editor/editormd.preview.css"/>
+    <link rel="stylesheet" href="/lib/editor/editormd.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/editor.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <script src="/javascripts/marked.min.js"></script>
 </head>
@@ -12,9 +12,8 @@
 <nav>
     <div class="wrapper clearfix">
         <a class="logo" href="/">
-            <img src="/images/favicon.ico" alt="<%=name %>"/>
-
-            <h1><%=name %><span>/个人博客</span></h1>
+            <img class="h_img" src="/images/favicon.ico" alt="<%=name %>"/>
+            <h1 class="h_name"><%=name %><span>/个人博客</span></h1>
         </a>
         <ul class="tags clearfix">
             <li class="cur"><a href="#">首页</a></li>
@@ -54,40 +53,9 @@
                         </div>
                     </div>
                 <%}%>
-                <!--<div class="mod-common">-->
-                <!--<div class="mod-hd"><p class="name">这是用户</p></div>-->
-                <!--<div class="mod-bd">-->
-                <!--引用：-->
-                <!--<div class="quote">-->
-                <!--<p class="name">这是用户</p>-->
-
-                <!--<p class="content">这貌似是一段试论测试！@#￥%这貌似是一段评论测试！@#￥%</p>-->
-                <!--</div>-->
-                <!--<p class="content">这貌似是一段试论测试！@#￥%这貌似是一段评论测试！@#￥%</p>-->
-                <!--</div>-->
-                <!--<div class="mod-fd">-->
-                <!--<a href=""><i class="fa fa-mail-reply"></i></a><span class="separate">|</span><span-->
-                <!--class="date">12:24&nbsp;&nbsp;3个小时前</span>-->
-                <!--</div>-->
-                <!--</div>-->
-            </div>
-        </div>
-        <div class="mod-reply">
-            <div class="mod-hd">
-                <p>我的评论：(部分HTML可用)</p>
-            </div>
-            <div class="mod-bd">
-                <label for="rep_cnt">评论<span class="require">*</span></label><textarea class="rep-cnt" id="rep_cnt"
-                                                                                       cols="30" rows="10"></textarea>
-                <label for="rep_name">昵称<span class="require">*</span></label><input id="rep_name" type="text"/>
-                <label for="rep_mail">邮箱<span class="require">*</span></label><input id="rep_mail" type="email"/>
-                <label for="rep_site">个人网站</label><input id="rep_site" type="text"/>
-                <label class="lab-remenber" for="remenber">记住我</label><input id="remenber" type="checkbox"/>
-                <input class="submit" type="submit" value="发表"/>
             </div>
         </div>
     </div>
-
     <!--侧边栏-->
     <% include sidebar.html%>
 

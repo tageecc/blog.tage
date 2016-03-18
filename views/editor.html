@@ -34,22 +34,27 @@
         });
     });
 
-    function post(){
-    alert(Editor.getMarkdown());
-        var article={
-            title: "namespace使用方法",//标题
-            tags: ['php','后台'],//标签
-            content: Editor.getMarkdown(),//内容
-            view: 111,//浏览量
-            date: "2014/4/4",//发布时间
-            comment: [
-                {name:"塔哥的水军一号1",content:'这是一段划水说得很好！',date:'2016/3/6'},
-                {name:"塔哥的水军二号2",content:'这是一段划水，说得很好！2',date:'2016/3/7'}
-            ]//评论
-        };
-        $.post('/article',article,function(result){
-            console.log(result);
-        },'json');
+    function post() {
+        var title = Editor.getMarkdown().match(/#\s*(.*)\n/);
+        var tags = Editor.getMarkdown().match(/Tags:\s*(.*)\s+\n/);
+        var validity = Editor.getMarkdown().match(/validity:\n((.|\n)+)content:/);
+        var content=Editor.getMarkdown().match(/content:\n((.|\n)+)/);
+        console.log(validity[1]);
+        $.ajax({
+            url: '/article',
+            type: 'post',
+            dataType: "json",
+            data: {
+                title: title ? title[1] : '还没有标题。。。。',//标题
+                tags: tags ? tags[1].split(' ') : ['未分类'],//标签
+                validity: validity!=null ? validity[1] : "还没有简介。。。。",
+                content: content!=null ? content[1] : "还没有内容。。。。"//内容
+            },
+            success: function (result) {
+                console.log(result);
+            }
+        });
+
     }
 </script>
 </body>

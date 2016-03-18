@@ -1,17 +1,13 @@
 var express = require('express');
 var User = require('../model/user');
 var Article = require('../model/article');
+var Date = require('../util/dateUtil.js');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
     Article.find({}, function (err, articles) {
         if (err) console.error(err);
-        if (articles&&articles.length) {
-            res.render('index', {name:'塔哥',articles: articles});
-        } else {
-            console.log("没有文章，怎么办？？？？？？？？？？？？？？？？？？？？？？");
-            res.render('500');
-        }
+        res.render('index', {name: '塔歌', articles: articles});
     })
 });
 
@@ -19,19 +15,25 @@ router.get('/article/:id', function (req, res, next) {
     Article.findOne({_id: req.params.id}, function (err, article) {
         if (err) console.error(err);
         if (article) {
-            res.render('article', {name:'塔哥',article: article});
+            res.render('article', {name: '塔歌', article: article});
         } else {
         }
     })
 });
-router.post('/article',function(req, res, next){
-    console.log(req.body);
-    console.log(req.body.article);
-    Article.create(req.body,function(err){
-        if(err) {
+router.post('/article', function (req, res, next) {
+    var article={
+        title:req.body.title,
+        head_img:req.body.head_img,
+        tags:req.body.tags,
+        validity :req.body.validity,
+        content:req.body.content,
+        date:Date.getDateTime(),
+        view:0
+    };
+    Article.create(article, function (err) {
+        if (err) {
             console.log(err);
         } else {
-            console.log('save ok');
             res.send({msg: "save ok!"});
         }
     })
