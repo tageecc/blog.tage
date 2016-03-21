@@ -30,3 +30,13 @@
         </div>
     </div>
 </div>
+<script>
+    $.ajax({
+        url:'/tags',
+        dataType:'json',
+        type:'get',
+        success:function(result){
+            console.log(result);
+        }
+    })
+</script>
