@@ -6,34 +6,72 @@ var Arr = require('../util/arrUtil.js');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-    Article.find({}, function (err, articles) {
-        if (err) console.error(err);
-        res.render('index', {name: '塔歌', articles: articles});
-    })
+
+    //判断是否是第一页，并把请求的页数转换成 number 类型
+    var page = req.query.p ? parseInt(req.query.p) : 1;
+    Article.count({}, function (err, count) {
+        Article.find({}, null, {skip: (page - 1) * 10, limit: 10, sort: {_id: -1}}, function (err, articles) {
+            if (err) console.error(err);
+            res.render('index', {
+                name: '塔歌',
+                page: page,
+                isFirstPage: page == 1,
+                isLastPage: (page - 1) * 10 + articles.length == count,
+                articles: articles
+            });
+        })
+    });
+
 });
 
 router.get('/tags', function (req, res, next) {
+
+    //判断是否是顶部
+    var isTop = req.query.top ? true : false;
     Article.find({}, function (err, articles) {
         if (err) console.log(err);
         if (articles && articles.length > 0) {
             var tags = [];
             for (var i = 0; i < articles.length; i++) {
-                tags=tags.concat(articles[i].tags);
+                tags = tags.concat(articles[i].tags);
             }
-            res.send({"tags": Arr.unique(tags)});
+            res.send({"tags": Arr.map2arr(Arr.unique(tags))});
         }
 
     })
 });
 router.get('/article/:id', function (req, res, next) {
 
-    Article.findOne({_id: req.params.id}, function (err, article) {
+    Article.findByIdAndUpdate({_id: req.params.id}, {"$inc": {"view": 1}}, function (err, article) {
         if (err) console.error(err);
         if (article) {
+            console.log(article);
             res.render('article', {name: '塔歌', article: article});
+
         } else {
+
         }
     })
+});
+router.get('/article/tags/:tag', function (req, res, next) {
+    //判断是否是第一页，并把请求的页数转换成 number 类型
+    var page = req.query.p ? parseInt(req.query.p) : 1;
+    Article.count({tags: req.params.tag}, function (err, count) {
+        Article.find({tags: req.params.tag}, null, {
+            skip: (page - 1) * 10,
+            limit: 10,
+            sort: {_id: -1}
+        }, function (err, articles) {
+            if (err) console.error(err);
+            res.render('index', {
+                name: '塔歌',
+                page: page,
+                isFirstPage: page == 1,
+                isLastPage: (page - 1) * 10 + articles.length == count,
+                articles: articles
+            });
+        })
+    });
 });
 router.post('/article', function (req, res, next) {
     var article = {
@@ -42,8 +80,7 @@ router.post('/article', function (req, res, next) {
         tags: req.body.tags.split(' '),
         validity: req.body.validity,
         content: req.body.content,
-        date: Date.getDateTime(),
-        view: 0
+        date: Date.getDateTime()
     };
     console.log(article.tags);
     Article.create(article, function (err) {

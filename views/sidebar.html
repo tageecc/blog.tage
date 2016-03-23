@@ -1,7 +1,7 @@
 <div class="frm-aside">
     <div class="mod-resume">
         <div class="mod-hd clearfix">
-            <h2>塔歌</h2><a class="follow" href=""><i class="fa fa-github-alt"></i>Follow</a>
+            <h2>塔歌</h2><a class="follow" href="https://github.com/keniusuannai"><i class="fa fa-github-alt"></i>Follow</a>
         </div>
         <div class="mod-bd">
             <a class="locate" href=""><i class="fa fa-anchor"></i>厦门</a>
@@ -11,32 +11,24 @@
         </div>
     </div>
     <!--<iframe class="yunPlayer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=290 height=110-->
-            <!--src="http://music.163.com/outchain/player?type=0&id=135223629&auto=0&height=90"></iframe>-->
+    <!--src="http://music.163.com/outchain/player?type=0&id=135223629&auto=0&height=90"></iframe>-->
     <div class="mod-tag">
         <div class="mod-hd"><i class="fa fa-tags"></i>标签集</div>
-        <div class="mod-bd">
-            <a href="#">前端开发(12)</a>
-            <a href="#">三字(3)</a>
-            <a href="#">java(3)</a>
-            <a href="#">node(34)</a>
-            <a href="#">生活炸鸡(5)</a>
-            <a href="#">两个字(1)</a>
-            <a href="#">前端开发(12)</a>
-            <a href="#">java(3)</a>
-            <a href="#">node(34)</a>
-            <a href="#">生活炸鸡(5)</a>
-            <a href="#">两个字(1)</a>
-            <a href="#">三字(3)</a>
+        <div class="mod-bd" id="tag_content">
         </div>
     </div>
 </div>
 <script>
     $.ajax({
-        url:'/tags',
-        dataType:'json',
-        type:'get',
-        success:function(result){
-            console.log(result);
+        url: '/tags',
+        dataType: 'json',
+        type: 'get',
+        success: function (result) {
+            var html="";
+            for (var i = 0, v; (v = result.tags[i]) != null; i++) {
+                html+='<a href="/article/tags/'+v[0]+'">'+v[0]+'('+v[1]+')</a>'
+            }
+            $('#tag_content').append(html);
         }
     })
 </script>

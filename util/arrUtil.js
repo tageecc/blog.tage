@@ -1,7 +1,18 @@
-exports.unique=function(arr){
-    var n=[];
-    for(var i=0;i<arr.length;i++){
-        if(n.indexOf(arr[i])==-1) n.push(arr[i]);
+exports.unique = function (arr) {
+    var hash = {};
+    for (var i = 0, item; (item = arr[i]) != null; i++) {
+        if (hash[item]) {
+            hash[item]++;
+        } else {
+            hash[item] = 1;
+        }
     }
-    return n;
+    return hash;
+};
+exports.map2arr = function (map) {
+    var arr = [];
+    for (var key in map) {
+        arr.push([key, map[key]]);
+    }
+    return arr;
 };

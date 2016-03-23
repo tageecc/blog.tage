@@ -6,7 +6,7 @@ var ArticleSchema = new mongoose.Schema({
     tags: [String],//标签
     validity: String,//内容简介
     content: String,//内容
-    view: Number,//浏览量
+    view: {type: Number, default: 1},//浏览量
     date: String,//发布时间
     comment: []//评论
 });

@@ -40,7 +40,6 @@
         var tags = Editor.getMarkdown().match(/Tags:\s*(.*)\s+\n/);
         var validity = Editor.getMarkdown().match(/validity:\n((.|\n)+)content:/);
         var content=Editor.getMarkdown().match(/content:\n((.|\n)+)/);
-        console.log(validity[1]);
         $.ajax({
             url: '/article',
             type: 'post',
