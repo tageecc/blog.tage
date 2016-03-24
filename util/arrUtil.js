@@ -14,5 +14,7 @@ exports.map2arr = function (map) {
     for (var key in map) {
         arr.push([key, map[key]]);
     }
-    return arr;
+    return arr.sort(function (x, y) {
+        return y[1] - x[1];
+    });
 };

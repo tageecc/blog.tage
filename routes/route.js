@@ -17,7 +17,8 @@ router.get('/', function (req, res, next) {
                 page: page,
                 isFirstPage: page == 1,
                 isLastPage: (page - 1) * 10 + articles.length == count,
-                articles: articles
+                articles: articles,
+                user: req.session.user
             });
         })
     });
@@ -27,7 +28,7 @@ router.get('/', function (req, res, next) {
 router.get('/tags', function (req, res, next) {
 
     //判断是否是顶部
-    var isTop = req.query.top ? true : false;
+    var isTop = req.query.top == 1;
     Article.find({}, function (err, articles) {
         if (err) console.log(err);
         if (articles && articles.length > 0) {
@@ -35,7 +36,11 @@ router.get('/tags', function (req, res, next) {
             for (var i = 0; i < articles.length; i++) {
                 tags = tags.concat(articles[i].tags);
             }
-            res.send({"tags": Arr.map2arr(Arr.unique(tags))});
+            if (isTop) {
+                res.send({"tags": Arr.map2arr(Arr.unique(tags)).slice(0, 4)});
+            } else {
+                res.send({"tags": Arr.map2arr(Arr.unique(tags))});
+            }
         }
 
     })
@@ -68,7 +73,8 @@ router.get('/article/tags/:tag', function (req, res, next) {
                 page: page,
                 isFirstPage: page == 1,
                 isLastPage: (page - 1) * 10 + articles.length == count,
-                articles: articles
+                articles: articles,
+                user: req.session.user
             });
         })
     });
@@ -82,22 +88,35 @@ router.post('/article', function (req, res, next) {
         content: req.body.content,
         date: Date.getDateTime()
     };
-    console.log(article.tags);
-    Article.create(article, function (err) {
+    Article.create(article, function (err, article) {
         if (err) {
             console.log(err);
         } else {
-            res.send({msg: "save ok!"});
+            console.log(article._id);
+            res.send({status: 1, id: article._id});
         }
     })
 });
 
 router.get('/editor', function (req, res, next) {
-    res.render('editor', {name: '塔歌'});
+    if (req.session.user) {
+        res.render('editor', {name: '塔歌', isArticle: 0});
+    } else {
+        res.end('login');
+    }
 });
 
-router.post('/editor', function (req, res, next) {
-
+router.get('/editor/:id', function (req, res, next) {
+    if (req.session.user) {
+        Article.findById({_id: req.params.id}, function (err, article) {
+            if (err) console.error(err);
+            if (article) {
+                res.end({name: '塔歌', isArticle: 1, article: article});
+            }
+        })
+    } else {
+        res.redirect('/login');
+    }
 });
 
 router.get('/login', function (req, res, next) {
@@ -109,11 +128,14 @@ router.post('/login', function (req, res, next) {
         if (err) console.error(err);
         if (user) {//如果用户存在添加session
             req.session.user = user;
-            res.render('list', {name: user.name});
+            res.redirect('editor');
         } else {
             res.end('error', {msg: "用户名或密码错误"});
         }
     })
 });
-
+router.get('/logout', function (req, res, next) {
+    req.session.user = null;
+    res.redirect('/');//登出成功后跳转到主页
+});
 module.exports = router;

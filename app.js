@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/route');
 
 mongoose.connect('mongodb://localhost/blog_tage');//连接mongodb数据库
+
 var app = express();
 
 // view engine setup
@@ -29,7 +30,8 @@ app.use(session({
     secret: 'tagetagetage',
     store: new MongoStore({
         url: 'mongodb://localhost/blog_tage',
-        collection: 'sessions'
+        collection: 'sessions',
+        cookie: { maxAge: 1000*60*60*3}
     }),
     resave: false,
     saveUninitialized: true

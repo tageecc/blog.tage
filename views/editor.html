@@ -3,58 +3,82 @@
 <head>
     <meta charset="utf-8"/>
     <title><%=name %></title>
-    <link rel="stylesheet" href="lib/editor/editormd.min.css"/>
-    <link rel="stylesheet" href="stylesheets/editor.css"/>
+    <link rel="stylesheet" href="/lib/editor/editormd.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/editor.css"/>
     <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="editormd"></div>
+<div id="temp" style="display:none"><% if(isArticle==1){%>#<%=article.tags%>
 
-<script src="lib/editor/editormd.min.js"></script>
+    Tags: <%=article.tags%>
+
+    valitidy:
+    <%=article.validity%>
+
+    content:
+    <%= article.content %><% } %>
+</div>
+<script src="/lib/editor/editormd.min.js"></script>
 <script type="text/javascript">
     var Editor;
-
     $(function () {
-
+        var h = document.body.clientWidth;
         Editor = editormd({
             id: "editormd",
             width: "100%",
-            height: 900,
-            path: "lib/editor/lib/",
+            height: h,
+            path: "/lib/editor/lib/",
+            onload: function () {
+                if ('<%=isArticle%>' == 1) {
+                    this.setMarkdown($('#temp').text());
+                    $('#temp').remove();
+                }
+
+            },
             toolbarIcons: function () {
-                // Or return editormd.toolbarModes[name]; // full, simple, mini
-                // Using "||" set icons align right.
                 return ["spacer", "preview", "bold", "italic", "spacer", "link", "quote", "code", "image", "spacer", "del", "list-ol", "list-ul", "hr", "spacer", "undo", "redo", "||", "user", "spacer", "submit"]
             },
-            // 用于增加自定义工具栏的功能，可以直接插入HTML标签，不使用默认的元素创建图标
             toolbarCustomIcons: {
-                user: '<span class="mybtn user"><i class="fa fa-user"></i><%=name%></span>',
+                user: '<span onclick="jump()" class="mybtn user"><i class="fa fa-user"></i><%=name%></span>',
                 spacer: '<span class="wmd-spacer"></span>',
                 submit: '<button onclick="post();" class="mybtn submit"><i class="fa fa-share-square-o"></i>发布</button>'
+
             }
         });
     });
-
     function post() {
         var title = Editor.getMarkdown().match(/#\s*(.*)\n/);
         var tags = Editor.getMarkdown().match(/Tags:\s*(.*)\s+\n/);
         var validity = Editor.getMarkdown().match(/validity:\n((.|\n)+)content:/);
-        var content=Editor.getMarkdown().match(/content:\n((.|\n)+)/);
+        var content = Editor.getMarkdown().match(/content:\n((.|\n)+)/);
         $.ajax({
             url: '/article',
             type: 'post',
             dataType: "json",
             data: {
                 title: title ? title[1] : '还没有标题。。。。',//标题
-                tags: tags!=null ? tags[1] : '未分类', //标签
-                validity: validity!=null ? validity[1] : "还没有简介。。。。",
-                content: content!=null ? content[1] : "还没有内容。。。。"//内容
+                tags: tags != null ? tags[1] : '未分类', //标签
+                validity: validity != null ? validity[1] : "还没有简介。。。。",
+                content: content != null ? content[1] : "还没有内容。。。。"//内容
             },
             success: function (result) {
-                console.log(result);
+                if (result.status == 1) {
+                    jump('/article/'+result.id);
+                }
+            },
+            error:function(err){
+                console.log(err);
             }
         });
-
+    }
+    function jump(url) {
+        if(url){
+            window.location.href = url;
+        }
+        else{
+            window.location.href = '/';
+        }
     }
 </script>
 </body>

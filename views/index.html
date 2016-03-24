@@ -33,7 +33,11 @@
                     <%}%>
                 </li>
             </ul>
+            <%if(user){%>
+            <a class="more" href="/editor/<%=v._id %>"><i class="fa fa-external-link"></i>编辑</a>
+            <%}else{%>
             <a class="more" href="/article/<%=v._id %>"><i class="fa fa-external-link"></i>阅读全文</a>
+            <%}%>
         </section>
         <%}%>
     </div>
