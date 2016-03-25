@@ -15,8 +15,7 @@
 Tags:<%for(var i=0,v;(v=article.tags[i])!=null;i++){%> <%=v %><%}%>
 
 validity:
-<%=article.validity%>
-content:
+<%=article.validity%>content:
 <%= article.content %>
 </div>
 <% } %>
@@ -24,7 +23,8 @@ content:
 <script type="text/javascript">
     var Editor;
     $(function () {
-        var h = document.body.clientWidth;
+        var h = window.innerHeight-15;
+        console.log(h);
         Editor = editormd({
             id: "editormd",
             width: "100%",
@@ -51,7 +51,7 @@ content:
     function post() {
         var title = Editor.getMarkdown().match(/#\s*(.*)\n/);
         var tags = Editor.getMarkdown().match(/Tags:\s*(.*)\s+\n/);
-        var h_img = Editor.getMarkdown().match(/h_img:\s*(.*)\s+\n/);
+        var h_img = Editor.getMarkdown().match(/h_img:\n((.|\n)+)validity:/);
         var validity = Editor.getMarkdown().match(/validity:\n((.|\n)+)content:/);
         var content = Editor.getMarkdown().match(/content:\n((.|\n)+)/);
         var url = $('#temp').attr('data-id') != undefined ? '/article/' + $('#temp').attr('data-id') : '/article';
