@@ -50,11 +50,7 @@ router.get('/article/:id', function (req, res, next) {
     Article.findByIdAndUpdate({_id: req.params.id}, {"$inc": {"view": 1}}, function (err, article) {
         if (err) console.error(err);
         if (article) {
-            console.log(article);
             res.render('article', {name: '塔歌', article: article});
-
-        } else {
-
         }
     })
 });
@@ -96,8 +92,24 @@ router.post('/article', function (req, res, next) {
             res.send({status: 1, id: article._id});
         }
     })
-});
 
+});
+router.post('/article/:id', function (req, res, next) {
+    var article = {
+        title: req.body.title,
+        head_img: req.body.head_img,
+        tags: req.body.tags.split(' '),
+        validity: req.body.validity,
+        content: req.body.content
+    };
+    Article.findByIdAndUpdate(req.params.id, {$set:article}, function (err, article) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send({status: 1, id: article._id});
+        }
+    })
+});
 router.get('/editor', function (req, res, next) {
     if (req.session.user) {
         res.render('editor', {name: '塔歌', isArticle: 0});
@@ -111,7 +123,8 @@ router.get('/editor/:id', function (req, res, next) {
         Article.findById({_id: req.params.id}, function (err, article) {
             if (err) console.error(err);
             if (article) {
-                res.end({name: '塔歌', isArticle: 1, article: article});
+                console.log(article);
+                res.render("editor",{name: '塔歌', isArticle: 1, article: article});
             }
         })
     } else {

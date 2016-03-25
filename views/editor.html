@@ -9,16 +9,17 @@
 </head>
 <body>
 <div id="editormd"></div>
-<div id="temp" style="display:none"><% if(isArticle==1){%>#<%=article.tags%>
+<% if(isArticle==1){%>
+<div id="temp" style="display:none" data-id="<%=article._id%>">#<%=article.title%>
 
-    Tags: <%=article.tags%>
+Tags:<%for(var i=0,v;(v=article.tags[i])!=null;i++){%> <%=v %><%}%>
 
-    valitidy:
-    <%=article.validity%>
-
-    content:
-    <%= article.content %><% } %>
+validity:
+<%=article.validity%>
+content:
+<%= article.content %>
 </div>
+<% } %>
 <script src="/lib/editor/editormd.min.js"></script>
 <script type="text/javascript">
     var Editor;
@@ -32,7 +33,7 @@
             onload: function () {
                 if ('<%=isArticle%>' == 1) {
                     this.setMarkdown($('#temp').text());
-                    $('#temp').remove();
+//                    $('#temp').remove();
                 }
 
             },
@@ -50,33 +51,36 @@
     function post() {
         var title = Editor.getMarkdown().match(/#\s*(.*)\n/);
         var tags = Editor.getMarkdown().match(/Tags:\s*(.*)\s+\n/);
+        var h_img = Editor.getMarkdown().match(/h_img:\s*(.*)\s+\n/);
         var validity = Editor.getMarkdown().match(/validity:\n((.|\n)+)content:/);
         var content = Editor.getMarkdown().match(/content:\n((.|\n)+)/);
+        var url = $('#temp').attr('data-id') != undefined ? '/article/' + $('#temp').attr('data-id') : '/article';
         $.ajax({
-            url: '/article',
+            url: url,
             type: 'post',
             dataType: "json",
             data: {
                 title: title ? title[1] : '还没有标题。。。。',//标题
                 tags: tags != null ? tags[1] : '未分类', //标签
+                h_img: h_img != null ? h_img[1] : null,
                 validity: validity != null ? validity[1] : "还没有简介。。。。",
                 content: content != null ? content[1] : "还没有内容。。。。"//内容
             },
             success: function (result) {
                 if (result.status == 1) {
-                    jump('/article/'+result.id);
+                    jump('/article/' + result.id);
                 }
             },
-            error:function(err){
+            error: function (err) {
                 console.log(err);
             }
         });
     }
     function jump(url) {
-        if(url){
+        if (url) {
             window.location.href = url;
         }
-        else{
+        else {
             window.location.href = '/';
         }
     }
