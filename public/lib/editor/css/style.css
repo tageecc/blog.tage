@@ -1,94 +1,463 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+html, body {
     margin: 0;
     padding: 0;
+    font-family: "Microsoft Yahei";
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-    display: block;
+a {
+    text-decoration: none;
+    color: #333;
 }
 
-audio, canvas, video {
-    display: inline-block;
-}
-
-img {
-    border: none;
-    vertical-align: middle;
-}
-
-ul, ol {
-    /*list-style: none;*/
-}
-
-.clear {
-    *zoom: 1;           /* for IE 6/7 */
-}
-
-.clear:before, .clear:after {
-    height: 0; 
-    content: "";
-    font-size: 0;
-    display: table;
-    line-height: 0;     /* for Opera */
+.clearfix:after {
     visibility: hidden;
-}
-
-.clear:after {
+    display: block;
+    font-size: 0;
+    content: " ";
     clear: both;
+    height: 0;
 }
 
-body {
+.clearfix {
+    zoom: 1;
+}
+
+nav {
+    height: 50px;
+    min-width: 1000px;
+    width: 100%;
+    -moz-box-shadow: 0 0 8px #333;
+    -webkit-box-shadow: 0 0 8px #333;
+    box-shadow: 0 0 8px #333
+}
+
+nav li {
+    list-style: none;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto
+}
+
+.frm-body {
+    margin-top: 20px;
+    padding-bottom: 20px
+}
+
+.frm-main {
+    width: calc(66.66666667% - 40px);
+    padding: 20px;
+    float: left;
+    position: relative;
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc
+}
+
+.frm-content {
+    display: none
+}
+
+footer .cnt_footer {
+    width: 66.6667%
+}
+
+footer .copy {
+    color: #999;
     font-size: 14px;
-    color: #666;
-    font-family: "Microsoft YaHei", "微软雅黑", Helvetica, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", Helvetica, Tahoma, "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif; 
-    background: #fff;
+    line-height: 65px
+}
+
+footer .copy:hover {
+    color: #333
+}
+
+footer .btn_next, footer .btn_prev {
+    float: right;
+    display: block;
+    width: 46px;
+    height: 46px;
+    background: #ccc;
     text-align: center;
+    line-height: 46px;
+    font-size: 1.4em;
+    color: #f5f5f5
 }
 
-#layout {
-    text-align: left;
+footer .btn_next:hover, footer .btn_prev:hover {
+    background-color: #bbb;
+    color: #fff;
 }
 
-#layout > header, .btns {
+footer .btn_prev {
+    float: left;
+}
+
+.frm-aside {
+    width: calc(33.33333333% - 40px);
+    padding: 10px;
+    float: right;
+}
+
+.logo {
+    float: left;
+}
+
+.logo:hover {
+    text-decoration: none
+}
+
+.logo .h_img {
+    width: 40px;
+    height: 40px;
+    padding: 6px 0 0 6px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%
+}
+
+.logo .h_name {
+    display: inline;
+    font-size: 16px;
+    float: right;
+    margin-left: 10px;
+}
+
+.logo .h_name span {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #999
+}
+
+.tags {
+    float: right
+}
+
+.tags li {
+    float: left;
+    margin: 4px 0 0 30px
+}
+
+.tags li a {
+    font-size: 14px;
+    -moz-transition: color, .23s;
+    -o-transition: color, .23s;
+    -webkit-transition: color, .23s;
+    transition: color, .23s
+}
+
+.tags li a:hover {
+    text-decoration: none;
+    color: #e12828
+}
+
+.tags .cur a {
+    color: #e12828
+}
+
+.mod-article {
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #ccc
+}
+
+.mod-article .title {
+    font-size: 25px;
+    color: #e12828;
+    padding-left: 10px;
+    border-left: 4px solid #e12828
+}
+
+.mod-article .title a {
+    color: #e12828
+}
+
+.mod-article .title a:hover {
+    color: #e12828
+}
+
+.mod-article .detail img {
+    float: left;
+    padding: 10px;
+    height: 200px;
+}
+
+.mod-article .detail p {
+    overflow: hidden;
+    padding-top: 5px;
+    line-height: 1.7em;
+    color: #999;
+    font-size: 14px
+}
+
+.mod-article .info {
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.mod-article .info li {
+    float: left;
+    position: relative;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #999
+}
+
+.mod-article .info .tag .tag-item, .mod-article-dtl .tag .tag-item {
+    color: #999;
+    background: #f5f5f5;
+    border: 1px solid #dedede;
+    margin-left: 5px;
+    padding: 0 3px;
+    border-radius: 3px;
+}
+
+.mod-article .more {
+    color: #fff;
+    float: right;
+    font-size: 12px;
+    background: #f4645f;
+    border-color: #e12828;
+    padding: 3px 5px;
+}
+
+.mod-article .more:hover {
+    background-color: #f5564a;
+    text-decoration: none
+}
+
+.mod-article .more i {
+    margin-right: 5px
+}
+
+.mod-article li {
+    list-style: none;
+}
+
+.mod-resume .mod-hd {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc
+}
+
+.mod-resume .mod-hd h2 {
+    font-size: 15px;
+    float: left;
+    background-color: #e12828;
+    width: 205px;
+    padding: 6px 5px;
+    color: #eee
+}
+
+.mod-resume .mod-hd .follow {
+    padding: 5px;
+    float: right;
+    border: 1px solid #999;
+    margin-top: 11px;
+}
+
+.mod-resume .mod-hd .follow:hover {
+    color: #eee;
+    border-color: #eee;
+    background-color: #e12828;
+    -moz-transition: color, .23s;
+    -o-transition: color, .23s;
+    -webkit-transition: color, .23s;
+    transition: color, .23s
+}
+
+.mod-resume .mod-bd {
+    padding: 10px 0;
+    line-height: 1.5em;
+    border-bottom: 1px solid #ccc
+}
+
+.mod-resume .mod-bd .group {
+    width: 90px
+}
+
+.mod-resume .mod-bd .locate {
+    float: right;
+    margin-right: 150px
+}
+
+.mod-resume .mod-bd a {
+    color: #f5564a;
+    display: block
+}
+
+.mod-resume .mod-bd a i {
+    color: #ccc;
+    margin-right: 5px
+}
+
+.mod-tag .mod-hd {
+    padding: 10px 0;
+    font-size: 19px;
+    border-bottom: 1px solid #ccc
+}
+
+.mod-tag .mod-bd {
+    padding: 10px 0
+}
+
+.mod-tag .mod-bd a {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 3px;
+    padding: 5px;
+    white-space: nowrap;
+    background-color: #777777;
+    color: #ffffff;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    float: left;
+}
+
+.mod-tag .mod-bd a:hover {
+    -moz-transition: color .5s ease;
+    -o-transition: color .5s ease;
+    -webkit-transition: color .5s ease;
+    transition: color .5s ease;
+    background: #F4584D;
+    color: #fff
+}
+
+.mod-article-dtl .mod-hd .title {
+    font-size: 30px;
+    color: #e12828;
+    padding-bottom: 10px;
+    border-left: 4px solid #E12828;
+    padding-left: 20px;
+    line-height: 30px;
+}
+
+.mod-article-dtl .mod-hd .date, .mod-article-dtl .mod-hd .view {
+    font-size: 14px;
+    color: #999
+}
+
+.mod-article-dtl .mod-bd {
+    padding: 20px 0
+}
+
+.mod-article-dtl .mod-fd {
+    padding-top: 10px;
+    border-top: 1px solid #e12828
+}
+
+.mod-article-dtl .tag {
+    margin-top: 10px;
+    color: #999;
+}
+
+.mod-article-dtl .tag .tag-item {
+    font-size: 12px;
+
+}
+
+.mod-common {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc
+}
+
+.mod-common .mod-hd .name {
+    color: #2B2B2B;
+    font: 700 16px "microsoft yahei"
+}
+
+.mod-common .mod-bd {
+    padding: 10px 0;
+    text-indent: 30px
+}
+
+.mod-common .mod-bd .content {
     padding: 15px 0;
+    font-size: 14px
+}
+
+.mod-common .mod-bd .quote {
+    padding: 10px;
     width: 90%;
     margin: 0 auto;
+    background-color: #faf9e3;
+    border: 1px solid #ccc;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px
 }
 
-.btns {
-    padding-top: 0;
+.mod-common .mod-bd .quote .name {
+    color: #2B2B2B;
+    font: 700 16px "microsoft yahei"
 }
 
-.btns button {
-    padding: 2px 8px;
+.mod-common .mod-fd {
+    float: right;
+    font-size: 12px;
+    color: #999;
+    border: 0;
+    padding: 0;
+    margin: -10px 0 0 0
 }
 
-#layout > header > h1 {
-    font-size: 20px;
+.mod-common .mod-fd a {
+    color: #999
+}
+
+.mod-common .mod-fd a:hover {
+    color: #333
+}
+
+.mod-common .mod-fd .separate {
+    margin: 0 5px
+}
+
+.mod-reply .mod-hd {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc
+}
+
+.mod-reply .mod-bd {
+    padding: 5px 0
+}
+
+.mod-reply .mod-bd input:focus, .mod-reply .mod-bd textarea:focus {
+    border: #87C6F9 1px solid;
+    box-shadow: 0 0 8px #67a6d9
+}
+
+.mod-reply .mod-bd input {
+    text-indent: 10px;
+    height: 30px;
+    width: 250px;
+    display: block;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px
 }
 
-.btns button, .btn {
-    padding: 8px 10px;
-    background: #fff;
-    border: 1px solid #ddd;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    cursor: pointer;
-    -webkit-transition: background 300ms ease-out;
-    transition: background 300ms ease-out;
+.mod-reply .mod-bd .rep-cnt {
+    padding: 5px;
+    width: 90%;
+    height: 100px;
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px
 }
 
-.btns button:hover, .btn:hover {
-    background: #f6f6f6;
+.mod-reply .mod-bd #remenber {
+    display: inline;
+    width: 15px;
+    height: 15px
+}
+
+.mod-reply .mod-bd .require {
+    color: red
 }
