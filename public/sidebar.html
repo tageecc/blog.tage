@@ -1,0 +1,34 @@
+<div class="frm-aside">
+    <div class="mod-resume">
+        <div class="mod-hd clearfix">
+            <h2>塔歌</h2><a class="follow" href="https://github.com/keniusuannai"><i class="fa fa-github-alt"></i>Follow</a>
+        </div>
+        <div class="mod-bd">
+            <a class="locate" href=""><i class="fa fa-anchor"></i>厦门</a>
+            <a class="group" href="#"><i class="fa fa-group"></i>4399</a>
+            <a href="tencent://message/?uin=896932646"><i class="fa fa-qq"></i>896932646</a>
+            <a href="mailto:bigtage@gmail.com"><i class="fa fa-envelope"></i>bigtage@gmail.com</a>
+        </div>
+    </div>
+    <!--<iframe class="yunPlayer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=290 height=110-->
+    <!--src="http://music.163.com/outchain/player?type=0&id=135223629&auto=0&height=90"></iframe>-->
+    <div class="mod-tag">
+        <div class="mod-hd"><i class="fa fa-tags"></i>标签集</div>
+        <div class="mod-bd clearfix" id="tag_content">
+        </div>
+    </div>
+</div>
+<script>
+    $.ajax({
+        url: '/tags',
+        dataType: 'json',
+        type: 'get',
+        success: function (result) {
+            var html="";
+            for (var i = 0, v; (v = result.tags[i]) != null; i++) {
+                html+='<a href="/article/tags/'+v[0]+'">'+v[0]+'('+v[1]+')</a>'
+            }
+            $('#tag_content').append(html);
+        }
+    })
+</script>

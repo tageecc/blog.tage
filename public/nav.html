@@ -1,0 +1,27 @@
+<nav>
+    <div class="wrapper clearfix">
+        <a class="logo" href="/">
+            <img class="h_img" src="/images/favicon.ico" alt="<%=name %>"/>
+            <h1 class="h_name"><%=name %><span>/个人博客</span></h1>
+        </a>
+        <ul class="tags clearfix" id="top_tags">
+            <li class="cur"><a href="/">首页</a></li>
+        </ul>
+    </div>
+</nav>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $.ajax({
+        url: '/tags',
+        dataType: 'json',
+        type: 'get',
+        data:{top:1},
+        success: function (result) {
+            var html="";
+            for (var i = 0, v; (v = result.tags[i]) != null; i++) {
+                html+='<li><a href="/article/tags/'+v[0]+'">'+v[0]+'</a></li>';
+            }
+            $('#top_tags').append(html);
+        }
+    })
+</script>

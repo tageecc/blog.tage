@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=name %>的个人博客</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/lib/editor/editormd.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/editor.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <script src="/javascripts/marked.min.js"></script>
+</head>
+<body>
+<!--顶部-->
+<% include nav.html%>
+<!--/顶部-->
+<div class="wrapper frm-body clearfix">
+    <!--文章内容-->
+    <div class="frm-main">
+        <div class="mod-article-dtl">
+            <div class="mod-hd">
+                <h1 class="title"><%=article.title%></h1>
+                <span class="date">时间：<%=article.date%></span>
+                <span class="view">浏览：<%=article.view%></span>
+                <div class="tag"><i class="fa fa-tags"></i>
+                    <%for(var t=0;t < article.tags.length;t++){%>
+                    <span class="tag-item"><%=article.tags[t]%></span>
+                    <%}%>
+                </div>
+            </div>
+            <div class="mod-bd markdown-body" id="content">
+                <textarea name="" id="temp" cols="30" rows="10" style="display: none;"><%=article.content%></textarea>
+                <script>
+                    document.getElementById('content').innerHTML = marked(document.getElementById('temp').value);
+                </script>
+            </div>
+            <div class="mod-fd">
+                <%for(var i =0,v;v=article.comment[i],i < article.comment.length;i++){%>
+                <div class="mod-common">
+                    <div class="mod-hd"><p class="name"><%=v.name%></p></div>
+                    <div class="mod-bd">
+                        <p class="content"><%=v.content%></p>
+
+                    </div>
+                    <div class="mod-fd">
+                        <a href=""><i class="fa fa-mail-reply"></i></a><span class="separate">|</span><span
+                            class="date"><%v.date%></span>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <!--/文章内容-->
+    <!--侧边栏-->
+    <% include sidebar.html%>
+    <!--/侧边栏-->
+
+</div>
+<footer class="wrapper">
+    <div class="cnt_footer">
+        <a class="copy" href="/">©塔歌</a>
+    </div>
+</footer>
+</body>
+</html>

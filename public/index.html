@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=name %>的个人博客</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel='stylesheet' href='release/css/style.css'/>
+</head>
+<body>
+<!--顶部-->
+<% include nav.html%>
+<!--/顶部-->
+<div class="wrapper frm-body clearfix">
+    <!--文章列表-->
+    <div class="frm-main">
+
+        <%for(var i =0,v;v=articles[i],i < articles.length;i++){%>
+        <section class="mod-article">
+            <h2 class="title"><a href="/article/<%=v._id %>"><%=v.title %></a></h2>
+
+            <div class="detail clearfix">
+                <%if(v.head_img&&v.head_img.length>0){%>
+                <img src="https://www.zybuluo.com/static/img/logo.png" alt="">
+                <%}%>
+                <p><%=v.validity %></p>
+            </div>
+            <ul class="info clearfix">
+                <li class="date"><i class="fa fa-clock-o"></i> <%=v.date %></li>
+                <li class="author"><i class="fa fa-user"></i> 塔歌</li>
+                <li class="view"><i class="fa fa-eye"></i> <%=v.view %></li>
+                <li class="tag"><i class="fa fa-tags"></i>
+                    <%for(var t=0;t < v.tags.length;t++){%>
+                    <span class="tag-item"><%=v.tags[t]%></span>
+                    <%}%>
+                </li>
+            </ul>
+            <%if(user){%>
+            <a class="more" href="/editor/<%=v._id %>"><i class="fa fa-external-link"></i>编辑</a>
+            <%}else{%>
+            <a class="more" href="/article/<%=v._id %>"><i class="fa fa-external-link"></i>阅读全文</a>
+            <%}%>
+        </section>
+        <%}%>
+    </div>
+    <!--/文章列表-->
+
+    <!--侧边栏-->
+    <% include sidebar.html%>
+    <!--/侧边栏-->
+</div>
+<footer class="wrapper">
+    <div class="cnt_footer clearfix">
+        <%if(!isFirstPage){%>
+        <a class="btn_prev" href="?p=<%= page-1 %>"><i class="fa fa-chevron-left"></i></a>
+        <%}%>
+        <%if(!isLastPage){%>
+        <a class="btn_next" href="?p=<%= page+1 %>"><i class="fa fa-chevron-right"></i></a>
+        <%}%>
+    </div>
+    <a class="copy" href="/">©塔歌</a>
+</footer>
+</body>
+</html>
