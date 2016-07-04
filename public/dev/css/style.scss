@@ -1,9 +1,455 @@
+/*global*/
+.wrapper {
+  width: 980px;
+  margin: 0 auto;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  zoom: 1.001;
+  color: #555;
+  background: #f1f1f1;
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 
-a {
-  color: #00B7FF;
+body a {
+  color: #FF706C;
+  transition: all 0.1s ease-in-out;
 }
 
+body a:hover {
+  color: #FF706C;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*header*/
+.header {
+  background: #FF706C;
+}
+
+.header-inner {
+  padding: 50px 0;
+  position: relative;
+}
+
+.header-inner .logo {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: #FFF no-repeat center;
+  background-size: 32px auto;
+  border-radius: 9999px;
+  border: 5px solid #FFF;
+  z-index: 3;
+}
+
+.header-inner .logo a {
+  display: block;
+  line-height: 0;
+}
+
+.header-inner .logo img {
+  border-radius: 9999px;
+}
+
+.header-inner .logo:hover {
+  background-color: #2D3642;
+}
+
+.header-inner .logo:hover img {
+  opacity: 0;
+}
+
+.header-inner .blog-title {
+  margin: 50px 0 50px 17%;
+  font-size: 2.2em;
+  line-height: 0;
+}
+
+.header-inner .blog-title a {
+  color: #FFF;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-inner .blog-title a:hover {
+  color: #2D3642;
+}
+
+.header-inner .logo.noimg {
+  background-color: #CCC;
+}
+
+.header-inner .logo.noimg:hover {
+  background-color: #2D3642;
+}
+
+/*content*/
+.content {
+  padding-bottom: 32px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.content:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 40px;
+  bottom: 63px;
+  height: 20px;
+  width: 20px;
+  background: #DDD;
+  border-radius: 999px;
+  z-index: 10;
+}
+
+.content:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 49px;
+  bottom: 63px;
+  width: 2px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.post {
+  margin-top: 50px;
+}
+
+.post-bubbles a {
+  box-sizing: content-box;
+  display: block;
+  border-radius: 999px;
+  position: absolute;
+  z-index: 10;
+  border: 3px solid #FFF;
+  color: #919095;
+  text-align: center;
+  font: 700 25px/44px "yahei";
+  height: 44px;
+  width: 44px;
+  background-size: 22px auto;
+  left: 25px;
+  margin-top: 33px;
+  background: #DDD;
+  transition: color .23s;
+}
+
+.post-bubbles a:hover {
+  color: #ff706c;
+  transition: color 1s;
+}
+
+.content-inner {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 87.5%;
+  float: right;
+  position: relative;
+  padding: 5.5%;
+  background: #FFF;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.content-inner:before {
+  content: "";
+  display: block;
+  border: 11px solid transparent;
+  border-right-color: #ddd;
+  position: absolute;
+  top: 47px;
+  left: -22px;
+}
+
+.content-inner:after {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-right-color: #FFF;
+  position: absolute;
+  top: 48px;
+  left: -20px;
+}
+
+.post {
+  position: relative;
+}
+
+.post-header {
+  padding-bottom: 4.5%;
+  border-bottom: 3px double #EEE;
+  margin-bottom: 4.5%;
+}
+
+.featured-media {
+  position: relative;
+  margin-bottom: 2.5em;
+}
+
+.featured-media a {
+  display: block;
+  line-height: 0;
+}
+
+.featured-media img {
+  border-radius: 4px;
+}
+
+.post-title {
+  font-size: 2.25em;
+  line-height: 120%;
+  font-weight: normal;
+}
+
+.post-title a {
+  color: #2D3642;
+}
+
+.post-meta {
+  padding-top: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.825em;
+  color: #999;
+}
+
+.post-meta .date-sep {
+  margin: 0 5px;
+  color: #ddd;
+}
+
+.post-meta a {
+  color: #999;
+}
+
+.post-content {
+  font-size: 1.075em;
+  line-height: 150%;
+  letter-spacing: -1px;
+  margin-bottom: 1.1em;
+  color: #555;
+}
+
+.post-content .more {
+  position: relative;
+  top: 24px;
+}
+
+.post-nav {
+  width: 87.5%;
+  margin: 50px 0 0 60px;
+  box-sizing: border-box;
+  padding: 4% 5.5%;
+}
+
+.post-nav a {
+  padding: 15px 20px;
+  margin: 1.5% 0;
+  border-radius: 3px;
+  color: #FFF;
+  line-height: 1;
+  background: #B4B4B4;
+  transition: all 0.2s ease-in-out;
+}
+
+.post-nav a:hover {
+  background: #FF706C;
+  color: #FFF;
+}
+
+.credits {
+  color: #777;
+  font-size: 0.85em;
+  box-sizing: border-box;
+  border-top: 1px solid #ddd;
+}
+
+.credits-inner {
+  padding: 40px 0;
+}
+
+.credits-left {
+  float: left;
+}
+
+.credits-right {
+  float: right;
+}
+
+.credits p {
+  font-weight: 500;
+}
+
+.credits a {
+  color: #777;
+}
+
+
+.single .content-inner, .page .content-inner, .error404 .content-inner {
+  width: 100%;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  float: none;
+  margin-left: 0;
+}
+.single .post, .page .post, .posts .attachment, .error404 .post {
+  background: #FFF;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.single .content:after, .single .content:before, .single .content-inner:after, .single .content-inner:before, .page .content:after, .page .content:before, .page .content-inner:after, .page .content-inner:before, .error404 .content:after, .error404 .content:before, .error404 .content-inner:after, .error404 .content-inner:before {
+  content: none;
+}
+.comments {
+  border-top: 1px solid #EEE;
+  padding: 5.5%;
+}
+.comments-title {
+  margin-bottom: 30px;
+}
+.comments-title, #reply-title, .pingbacks-title {
+  font-size: 1.75em;
+  font-weight: 400;
+  color: #333;
+}
+li.comment, li > div.comment {
+  margin-bottom: 40px;
+  position: relative;
+}
+.comment-meta {
+  margin-bottom: 1em;
+}
+.comment-meta .avatar {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  float: left;
+}
+.comment-meta-content {
+  margin-left: 65px;
+  padding-top: 7px;
+}
+.comment-meta-content cite {
+  font-size: 1.075em;
+  color: #2B323A;
+  margin-bottom: 5px;
+  display: block;
+  font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+}
+.comment-meta-content cite a {
+  color: #2B323A;
+}
+.comment-meta-content p {
+  color: #BBB;
+}
+.comment-actions {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+.comment-actions a, a#cancel-comment-reply-link {
+  display: inline-block;
+  background: #DDD;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  color: #FFF;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.comment .children {
+  padding-left: 5%;
+  border-left: 2px solid #EEE;
+}
+.comment .children li:last-child {
+  margin-bottom: 0;
+}
+li.comment, li > div.comment {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+#respond {
+  padding: 5.5%;
+  border-top: 1px solid #EEE;
+  border-radius: 0 0 4px 4px;
+}
+#respond p, #respond code {
+  line-height: 150%;
+}
+p.comment-notes, p.logged-in-as {
+  margin-bottom: 2em;
+  color: #666;
+}
+.comment-form p {
+  margin-bottom: 1em;
+}
+.comment-form input, .comment-form textarea {
+  -webkit-appearance: none;
+  border: none;
+  background: #FAFAFA no-repeat 96% center;
+  background-size: 20px auto;
+  font-size: 1em;
+  color: #444;
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding: 18px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #EEE;
+}
+.comment-form input {
+  max-width: 75%;
+}
+.comment-form label {
+  display: none;
+}
+.comment-form input[type="submit"] {
+  width: auto;
+  max-width: none;
+  padding: 15px 20px 16px 20px;
+  margin-bottom: 0;
+  border: none;
+  background: #2D3642;
+  color: #FFF;
+  font-size: 0.925em;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.comment-form input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #FF706C;
+  color: #FFF;
+}

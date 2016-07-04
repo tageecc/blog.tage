@@ -1,62 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%=name %>的个人博客</title>
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link rel='stylesheet' href='release/css/style.css'/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>塔歌's blog</title>
+    <link rel="stylesheet" href="release/css/style.min.css">
 </head>
 <body>
-<!--顶部-->
-<% include nav.html%>
-<!--/顶部-->
-<div class="wrapper frm-body clearfix">
-    <!--文章列表-->
-    <div class="frm-main">
-
-        <%for(var i =0,v;v=articles[i],i < articles.length;i++){%>
-        <section class="mod-article">
-            <h2 class="title"><a href="/article/<%=v._id %>"><%=v.title %></a></h2>
-
-            <div class="detail clearfix">
-                <%if(v.head_img&&v.head_img.length>0){%>
-                <img src="https://www.zybuluo.com/static/img/logo.png" alt="">
-                <%}%>
-                <p><%=v.validity %></p>
-            </div>
-            <ul class="info clearfix">
-                <li class="date"><i class="fa fa-clock-o"></i> <%=v.date %></li>
-                <li class="author"><i class="fa fa-user"></i> 塔歌</li>
-                <li class="view"><i class="fa fa-eye"></i> <%=v.view %></li>
-                <li class="tag"><i class="fa fa-tags"></i>
-                    <%for(var t=0;t < v.tags.length;t++){%>
-                    <span class="tag-item"><%=v.tags[t]%></span>
-                    <%}%>
-                </li>
-            </ul>
-            <%if(user){%>
-            <a class="more" href="/editor/<%=v._id %>"><i class="fa fa-external-link"></i>编辑</a>
-            <%}else{%>
-            <a class="more" href="/article/<%=v._id %>"><i class="fa fa-external-link"></i>阅读全文</a>
-            <%}%>
-        </section>
-        <%}%>
+<div class="header">
+    <div class="header-inner wrapper">
+        <a class="logo" href="#"><img src="release/images/logo.jpg" alt="塔歌" width="100" height="100"></a>
+        <h1 class="blog-title">
+            <a href="/" title="tage's blog"
+               rel="home">塔歌's blog</a>
+        </h1>
     </div>
-    <!--/文章列表-->
-
-    <!--侧边栏-->
-    <% include sidebar.html%>
-    <!--/侧边栏-->
 </div>
-<footer class="wrapper">
-    <div class="cnt_footer clearfix">
-        <%if(!isFirstPage){%>
-        <a class="btn_prev" href="?p=<%= page-1 %>"><i class="fa fa-chevron-left"></i></a>
-        <%}%>
-        <%if(!isLastPage){%>
-        <a class="btn_next" href="?p=<%= page+1 %>"><i class="fa fa-chevron-right"></i></a>
-        <%}%>
+<div class="content wrapper">
+    <div class="posts">
+        <div class="post clearfix">
+            <div class="post-bubbles">
+                <a href="#" title="7月">7月</a>
+            </div>
+            <div class="content-inner">
+                <div class="post-header">
+                    <div class="featured-media">
+                        <a href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/" rel="bookmark"
+                           title="这是一句标题这是，一句标题">
+
+                            <img width="766" height="510"
+                                 src="http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280-766x510.jpg"
+                                 class="attachment-post-image size-post-image wp-post-image"
+                                 alt="tumblr_mnh0n9pHJW1st5lhmo1_1280"
+                                 srcset="http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280-1024x682.jpg 1024w, http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280-766x510.jpg 766w, http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280.jpg 1280w"
+                                 sizes="(max-width: 766px) 100vw, 766px">
+                        </a>
+                    </div> <!-- /featured-media -->
+
+
+                    <h2 class="post-title"><a
+                            href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/" rel="bookmark"
+                            title="这是一句标题这是，一句标题">这是一句标题这是，一句标题</a></h2>
+                    <div class="post-meta">
+                        <span class="post-date"><a
+                                href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/"
+                                title="14:20">2016-6-6</a></span>
+                        <span class="date-sep"> / </span>
+                        <span class="post-author"><a href="http://andersnoren.se/themes/lingonberry/author/anders/"
+                                                     title="Posts by tage" rel="author">TAGE</a></span>
+                        <span class="date-sep"> / </span>
+                        <a href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/#comments">评论(5)</a>
+                    </div> <!-- /post-meta -->
+
+                </div> <!-- /post-header -->
+
+                <div class="post-content">
+                    <p>这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，</p>
+                    <p>
+                        这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，</p>
+                    <a class="more" href="#">继续阅读</a>
+                </div> <!-- /post-content -->
+            </div> <!-- /post content-inner -->
+        </div>
+        <div class="post clearfix">
+            <div class="post-bubbles">
+                <a href="#" title="7月">7月</a>
+            </div>
+            <div class="content-inner">
+                <div class="post-header">
+                    <h2 class="post-title"><a
+                            href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/" rel="bookmark"
+                            title="这是一句标题这是，一句标题">这是一句标题这是，一句标题</a></h2>
+                    <div class="post-meta">
+                        <span class="post-date"><a
+                                href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/"
+                                title="14:20">2016-6-6</a></span>
+                        <span class="date-sep"> / </span>
+                        <span class="post-author"><a href="http://andersnoren.se/themes/lingonberry/author/anders/"
+                                                     title="Posts by tage" rel="author">TAGE</a></span>
+                        <span class="date-sep"> / </span>
+                        <a href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/#comments">评论(5)</a>
+                    </div> <!-- /post-meta -->
+
+                </div> <!-- /post-header -->
+
+                <div class="post-content">
+                    <p>这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，</p>
+                    <p>
+                        这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，</p>
+                    <a class="more" href="#">继续阅读</a>
+                </div> <!-- /post-content -->
+            </div> <!-- /post content-inner -->
+        </div>
+        <div class="post-nav">
+            <a href="http://andersnoren.se/themes/lingonberry/page/2/" class="post-nav-older">« 显示更多</a>
+        </div>
     </div>
-    <a class="copy" href="/">©塔歌</a>
-</footer>
+</div>
+<div class="credits section">
+    <div class="credits-inner wrapper clearfix">
+        <p class="credits-left">
+            <span>Copyright</span> © 2016 <a href="http://andersnoren.se/themes/lingonberry/" title="Lingonberry">塔歌</a>
+        </p>
+        <p class="credits-right">
+            <span>Theme by <a href="http://www.andersnoren.se">Anders Noren</a> — </span><a href="javascript:void(0)" title="To the top" class="tothetop">Up ↑</a>
+        </p>
+        <div class="clear"></div>
+    </div> <!-- /credits-inner -->
+</div>
 </body>
 </html>

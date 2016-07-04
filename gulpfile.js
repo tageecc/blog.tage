@@ -6,7 +6,8 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),//合并文件
     cssmin = require('gulp-minify-css'),//css压缩
     jshint = require('gulp-jshint'),//js代码校验
-    uglify = require('gulp-uglify');//js压缩，混淆
+    uglify = require('gulp-uglify'),//js压缩，混淆
+    rename = require('gulp-rename');
 
 // Styles任务
 gulp.task('css', function () {
@@ -15,10 +16,10 @@ gulp.task('css', function () {
         .pipe(sass())
         //添加前缀
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-        //给文件添加.min后缀
-        .pipe(rename({suffix: '.min'}))
+        //合并文件
+        .pipe(concat('style.min.css'))
         //压缩样式文件
-        .pipe(minifycss())
+        .pipe(cssmin())
         //输出压缩文件到指定目录
         .pipe(gulp.dest('public/release/css/'))
         //提醒任务完成
@@ -41,10 +42,11 @@ gulp.task('js', function() {
         //提醒任务完成
         .pipe(notify({ message: 'js task complete!' }));
 });
-
-gulp.task('watch', function() {
+gulp.task('watch-css', function() {
     // Watch .scss files
     gulp.watch('public/dev/css/*.scss', ['css']);
+});
+gulp.task('watch-js', function() {
     // Watch .js files
     gulp.watch('public/dev/js/*.js', ['js']);
 });

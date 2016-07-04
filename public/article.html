@@ -1,64 +1,218 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%=name %>的个人博客</title>
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/lib/editor/editormd.min.css"/>
-    <link rel="stylesheet" href="/stylesheets/editor.css"/>
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
-    <script src="/javascripts/marked.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>塔歌's blog</title>
+    <link rel="stylesheet" href="release/css/style.min.css">
 </head>
-<body>
-<!--顶部-->
-<% include nav.html%>
-<!--/顶部-->
-<div class="wrapper frm-body clearfix">
-    <!--文章内容-->
-    <div class="frm-main">
-        <div class="mod-article-dtl">
-            <div class="mod-hd">
-                <h1 class="title"><%=article.title%></h1>
-                <span class="date">时间：<%=article.date%></span>
-                <span class="view">浏览：<%=article.view%></span>
-                <div class="tag"><i class="fa fa-tags"></i>
-                    <%for(var t=0;t < article.tags.length;t++){%>
-                    <span class="tag-item"><%=article.tags[t]%></span>
-                    <%}%>
-                </div>
-            </div>
-            <div class="mod-bd markdown-body" id="content">
-                <textarea name="" id="temp" cols="30" rows="10" style="display: none;"><%=article.content%></textarea>
-                <script>
-                    document.getElementById('content').innerHTML = marked(document.getElementById('temp').value);
-                </script>
-            </div>
-            <div class="mod-fd">
-                <%for(var i =0,v;v=article.comment[i],i < article.comment.length;i++){%>
-                <div class="mod-common">
-                    <div class="mod-hd"><p class="name"><%=v.name%></p></div>
-                    <div class="mod-bd">
-                        <p class="content"><%=v.content%></p>
-
-                    </div>
-                    <div class="mod-fd">
-                        <a href=""><i class="fa fa-mail-reply"></i></a><span class="separate">|</span><span
-                            class="date"><%v.date%></span>
-                    </div>
-                </div>
-                <%}%>
-            </div>
-        </div>
+<body class="single">
+<div class="header">
+    <div class="header-inner wrapper">
+        <a class="logo" href="#"><img src="release/images/logo.jpg" alt="塔歌" width="100" height="100"></a>
+        <h1 class="blog-title">
+            <a href="/" title="tage's blog"
+               rel="home">塔歌's blog</a>
+        </h1>
     </div>
-    <!--/文章内容-->
-    <!--侧边栏-->
-    <% include sidebar.html%>
-    <!--/侧边栏-->
+</div>
+<div class="content wrapper">
+    <div class="posts">
+        <div class="post">
+            <div class="content-inner">
+                <div class="post-header">
+                    <div class="featured-media">
+                        <a href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/" rel="bookmark"
+                           title="这是一句标题这是，一句标题">
+
+                            <img width="100%"
+                                 src="http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280-766x510.jpg"
+                                 class="attachment-post-image size-post-image wp-post-image"
+                                 alt="tumblr_mnh0n9pHJW1st5lhmo1_1280"
+                                 srcset="http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280-1024x682.jpg 1024w, http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280-766x510.jpg 766w, http://andersnoren.se/themes/lingonberry/wp-content/uploads/2013/07/tumblr_mnh0n9pHJW1st5lhmo1_1280.jpg 1280w"
+                                 sizes="(max-width: 766px) 100vw, 766px">
+                        </a>
+                    </div>
+                    <h2 class="post-title"><a
+                            href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/" rel="bookmark"
+                            title="这是一句标题这是，一句标题">这是一句标题这是，一句标题</a></h2>
+                    <div class="post-meta">
+                        <span class="post-date"><a
+                                href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/"
+                                title="14:20">2016-6-6</a></span>
+                        <span class="date-sep"> / </span>
+                        <span class="post-author"><a href="http://andersnoren.se/themes/lingonberry/author/anders/"
+                                                     title="Posts by tage" rel="author">TAGE</a></span>
+                        <span class="date-sep"> / </span>
+                        <a href="http://andersnoren.se/themes/lingonberry/drink-more-coffee-developers/#comments">评论(5)</a>
+                    </div> <!-- /post-meta -->
+
+                </div> <!-- /post-header -->
+
+                <div class="post-content">
+                    <p>这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，</p>
+                    <p>
+                        这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，这是一段内容这是一段内容，</p>
+                    <a class="more" href="#">继续阅读</a>
+                </div> <!-- /post-content -->
+            </div>
+            <a name="comments"></a>
+            <div class="comments">
+                <h2 class="comments-title">
+                    5 条评论
+                </h2>
+                <ol class="commentlist">
+                    <li class="comment">
+                        <div class="comment">
+                            <div class="comment-meta">
+                                <img alt=""
+                                     src="release/images/logo.jpg"
+                                     class="avatar photo" height="120" width="120">
+                                <div class="comment-meta-content">
+                                    <cite class="fn"><a href="/" class="url">塔歌</a></cite>
+                                    <p>2016/6/14 13:20</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                </div>
+                            </div>
+                            <div class="comment-content post-content">
+                                <p>这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，</p>
+                                <div class="comment-actions">
+                                    <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="children">
+                            <li class="comment">
+
+                                <div class="comment">
+
+                                    <div class="comment-meta comment-author vcard">
+
+                                        <img alt=""
+                                             src="http://0.gravatar.com/avatar/90f9d02d0d5d69300e324af62bba4ba8?s=120&amp;d=mm&amp;r=g"
+                                             class="avatar" height="120" width="120">
+                                        <div class="comment-meta-content">
+                                            <cite class="fn">某个游客</cite>
+                                            <p>2016/6/14 13:20</p>
+                                        </div>
+                                        <div class="comment-actions">
+                                            <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-content post-content">
+                                        <p>这是另一段评论，这是另一段评论，这是另一段评论，这是另一段评论，这是另一段评论，这是另一段评论，这是另一段评论，这是另一段评论，这是另一段评论，</p>
+                                        <div class="comment-actions">
+                                            <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="children">
+                                    <li class="comment comment-author-anders">
+                                        <div class="comment">
+                                            <div class="comment-meta">
+                                                <img alt=""
+                                                     src="release/images/logo.jpg"
+                                                     class="avatar photo" height="120" width="120">
+                                                <div class="comment-meta-content">
+                                                    <cite class="fn"><a href="/" class="url">塔歌</a></cite>
+                                                    <p>2016/6/14 13:20</p>
+                                                </div>
+                                                <div class="comment-actions">
+                                                    <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                                </div>
+                                            </div>
+                                            <div class="comment-content post-content">
+                                                <p>这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，</p>
+                                                <div class="comment-actions">
+                                                    <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="comment comment-author-anders">
+                        <div class="comment">
+                            <div class="comment-meta">
+                                <img alt=""
+                                     src="release/images/logo.jpg"
+                                     class="avatar photo" height="120" width="120">
+                                <div class="comment-meta-content">
+                                    <cite class="fn"><a href="/" class="url">塔歌</a></cite>
+                                    <p>2016/6/14 13:20</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                </div>
+                            </div>
+                            <div class="comment-content post-content">
+                                <p>这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，这是一段评论，</p>
+                                <div class="comment-actions">
+                                    <a class="comment-reply-link" href="javascript:void(0)">评论</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                </ol>
+
+
+            </div><!-- /comments -->
+
+
+            <div id="respond" class="comment-respond">
+                <h3 id="reply-title" class="comment-reply-title">Leave a Reply
+                    <small><a rel="nofollow" id="cancel-comment-reply-link"
+                              href="/themes/lingonberry/drink-more-coffee-developers/#respond" style="display:none;">Cancel
+                        reply</a></small>
+                </h3>
+                <form action="http://andersnoren.se/themes/lingonberry/wp-comments-post.php" method="post"
+                      id="commentform" class="comment-form">
+                    <p class="comment-notes">Your email address will not be published.</p>
+                    <p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="6"
+                                                              required=""></textarea></p>
+                    <p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name"
+                                                          value="" size="30"><label for="author">Author</label> <span
+                            class="required">*</span></p>
+                    <p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email"
+                                                         value="" size="30"><label for="email">Email</label> <span
+                            class="required">*</span></p>
+                    <p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value=""
+                                                       size="30"><label for="url">Website</label></p>
+                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
+                                                  value="Post Comment"> <input type="hidden" name="comment_post_ID"
+                                                                               value="1730" id="comment_post_ID">
+                        <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                    </p>
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce"
+                                                     name="akismet_comment_nonce" value="caf9aba534"></p>
+                    <p style="display: none;"></p>                <input type="hidden" id="ak_js" name="ak_js"
+                                                                         value="1467513775123"></form>
+            </div><!-- #respond -->
+
+
+        </div> <!-- /post -->
+
+    </div> <!-- /posts -->
 
 </div>
-<footer class="wrapper">
-    <div class="cnt_footer">
-        <a class="copy" href="/">©塔歌</a>
-    </div>
-</footer>
+<div class="credits section">
+    <div class="credits-inner wrapper clearfix">
+        <p class="credits-left">
+            <span>Copyright</span> © 2016 <a href="http://andersnoren.se/themes/lingonberry/" title="Lingonberry">塔歌</a>
+        </p>
+        <p class="credits-right">
+            <span>Theme by <a href="http://www.andersnoren.se">Anders Noren</a> — </span><a href="javascript:void(0)"
+                                                                                            title="To the top"
+                                                                                            class="tothetop">Up ↑</a>
+        </p>
+        <div class="clear"></div>
+    </div> <!-- /credits-inner -->
+</div>
 </body>
 </html>
